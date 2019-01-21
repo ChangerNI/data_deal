@@ -67,7 +67,7 @@ public class Start {
             for (ProductEnums productEnums : ProductEnums.values()) {
                 String productUrl = productEnums.getUrl();
                 ParseHtmlBlockTask parseHtmlBlockTask = new ParseHtmlBlockTask(productUrl, cookie);
-                htmlParserExecutorService.submit(parseHtmlBlockTask);
+                htmlParserExecutorService.execute(parseHtmlBlockTask);
             }
 
         } catch (Exception e) {

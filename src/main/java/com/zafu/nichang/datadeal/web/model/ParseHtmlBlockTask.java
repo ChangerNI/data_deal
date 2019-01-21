@@ -45,7 +45,7 @@ public class ParseHtmlBlockTask implements Runnable {
             System.out.println(productList.size());
             System.out.println(productList.stream().findFirst());
         } catch (Exception e) {
-            log.error("【数据解析】发生异常", e);
+            log.error("【数据解析】发生异常：", e);
         }
     }
 
