@@ -1,7 +1,7 @@
 package com.zafu.nichang.datadeal.web.enums;
 
 /**
- * @author 朱文赵
+ * @author 倪畅
  * @date 2019/1/21 16:49
  */
 public enum  ProductEnums {

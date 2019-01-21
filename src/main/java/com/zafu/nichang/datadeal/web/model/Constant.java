@@ -3,7 +3,7 @@ package com.zafu.nichang.datadeal.web.model;
 import java.util.regex.Pattern;
 
 /**
- * @author nichang
+ * @author 倪畅
  * @version 1.0 2019-01-16
  */
 public class Constant {

@@ -4,7 +4,7 @@ package com.zafu.nichang.datadeal.web.model;
 /**
  * 配置
  *
- * @author nichang
+ * @author 倪畅
  * @version 1.0 2019-01-16
  */
 public class PropertiesModel {

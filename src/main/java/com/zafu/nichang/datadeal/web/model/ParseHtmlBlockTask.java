@@ -13,6 +13,8 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * @author 倪畅
+ * @version 1.0 2019-01-21
+ *
  */
 public class ParseHtmlBlockTask implements Runnable {
 
