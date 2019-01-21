@@ -1,13 +1,10 @@
-package com.zafu.nichang.datadeal.web.util;
+package com.zafu.nichang.datadeal.webspider.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 /**
  * @author 倪畅
  * @version 1.0 2019-01-16

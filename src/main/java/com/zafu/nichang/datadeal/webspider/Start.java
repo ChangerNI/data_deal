@@ -1,12 +1,11 @@
-package com.zafu.nichang.datadeal.web;
+package com.zafu.nichang.datadeal.webspider;
 
-import com.zafu.nichang.datadeal.web.enums.ProductEnums;
-import com.zafu.nichang.datadeal.web.model.ParseHtmlBlockTask;
-import com.zafu.nichang.datadeal.web.model.Product;
-import com.zafu.nichang.datadeal.web.model.PropertiesModel;
-import com.zafu.nichang.datadeal.web.util.DbUtil;
-import com.zafu.nichang.datadeal.web.util.PropertiesUtil;
-import com.zafu.nichang.datadeal.web.util.RegUtil;
+import com.zafu.nichang.datadeal.webspider.enums.ProductEnums;
+import com.zafu.nichang.datadeal.webspider.model.ParseHtmlBlockTask;
+import com.zafu.nichang.datadeal.webspider.model.PropertiesModel;
+import com.zafu.nichang.datadeal.webspider.util.DbUtil;
+import com.zafu.nichang.datadeal.webspider.util.PropertiesUtil;
+import com.zafu.nichang.datadeal.webspider.util.RegUtil;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

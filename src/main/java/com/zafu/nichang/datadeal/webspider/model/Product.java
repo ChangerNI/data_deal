@@ -1,4 +1,4 @@
-package com.zafu.nichang.datadeal.web.model;
+package com.zafu.nichang.datadeal.webspider.model;
 
 import java.util.LinkedList;
 

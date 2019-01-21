@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 通过这个配置文件完成mybaits与数据库的链接 -->
+<configuration>
+    <!-- 引入database.properties文件 配置resource优先级高于 property节点-->
+    <!--<properties resource="database.properties" />-->
+
+    <!--<properties>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/smbms"/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+    </properties>-->
+
+    <properties resource="database.properties">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/data_deal?characterEncoding=utf-8"/>
+        <property name="user" value="root"/>
+        <property name="password" value="5054nichang"/>
+    </properties>
+
+    <!-- 配置mybatis的log实现为LOG4J -->
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+    </settings>
+
+    <!-- 类型别名,这里定义别名ProviderMapper就可以使用别名了.仅仅只关联XML配置，简写冗长的Java类名 -->
+    <typeAliases>
+        <typeAlias alias="ProductDao" type="com.lsl.ssm.pojo.Provider"/>
+        <!--<package name="com.lsl.ssm.pojo"/>-->
+    </typeAliases>
+
+    <!-- default设置默认环境为哪个 -->
+    <environments default="test">
+        <environment id="test">
+            <!-- 配置事务管理为 采用JDBC事务管理 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- POOLED:mybatis自带的数据源,JNDI:基于tomcat的数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${user}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 将mapper文件加入到配置文件中 -->
+    <mappers>
+        <mapper resource="/resources/ProductMapper.xml" />
+    </mappers>
+</configuration>

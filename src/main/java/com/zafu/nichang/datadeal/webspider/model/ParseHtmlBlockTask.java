@@ -1,7 +1,7 @@
-package com.zafu.nichang.datadeal.web.model;
+package com.zafu.nichang.datadeal.webspider.model;
 
-import com.zafu.nichang.datadeal.web.util.OkHttpUtil;
-import com.zafu.nichang.datadeal.web.util.RegUtil;
+import com.zafu.nichang.datadeal.webspider.util.OkHttpUtil;
+import com.zafu.nichang.datadeal.webspider.util.RegUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

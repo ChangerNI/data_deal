@@ -1,4 +1,4 @@
-package com.zafu.nichang.datadeal.web.enums;
+package com.zafu.nichang.datadeal.webspider.enums;
 
 /**
  * @author 倪畅
@@ -22,4 +22,5 @@ public enum  ProductEnums {
 
     public String getUrl() {
         return url;
-    }}
+    }
+}

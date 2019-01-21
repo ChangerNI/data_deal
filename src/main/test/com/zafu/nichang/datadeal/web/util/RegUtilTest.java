@@ -1,4 +1,4 @@
-package com.zafu.nichang.datadeal.web.util;
+package com.zafu.nichang.datadeal.webspider.util;
 
 import org.junit.Test;
 

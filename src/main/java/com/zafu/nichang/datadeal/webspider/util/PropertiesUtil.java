@@ -1,6 +1,6 @@
-package com.zafu.nichang.datadeal.web.util;
+package com.zafu.nichang.datadeal.webspider.util;
 
-import com.zafu.nichang.datadeal.web.model.PropertiesModel;
+import com.zafu.nichang.datadeal.webspider.model.PropertiesModel;
 
 import java.io.*;
 import java.util.*;

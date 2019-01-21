@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- DAO(Data Access Object)数据访问对象 -->
+
+<mapper namespace="com.zafu.nichang.datadeal.impl.ProductMapper.java">
+    <!--&lt;!&ndash; 查询供应商表记录数 &ndash;&gt;-->
+    <!--<select id="count" resultType="int">-->
+        <!--select count(1) as count from-->
+        <!--smbms_provider-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash; 查询供应商列表 &ndash;&gt;-->
+    <!--<select id="getProviderList" resultType="mProvider">-->
+        <!--select * from smbms_provider-->
+    <!--</select>-->
+
+</mapper>
