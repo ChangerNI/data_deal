@@ -1,8 +1,6 @@
 package com.zafu.nichang.datadeal.web;
 
-import com.zafu.nichang.datadeal.web.model.Constant;
-import com.zafu.nichang.datadeal.web.model.Product;
-import com.zafu.nichang.datadeal.web.model.PropertiesModel;
+import com.zafu.nichang.datadeal.web.model.*;
 import com.zafu.nichang.datadeal.web.util.DbUtil;
 import com.zafu.nichang.datadeal.web.util.OkHttpUtil;
 import com.zafu.nichang.datadeal.web.util.PropertiesUtil;
@@ -15,8 +13,10 @@ import java.sql.Connection;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -73,19 +73,20 @@ public class Start {
             logger.info("maxPageVegetable: {}, maxPageFruit: {}, maxPageMeat;{}, maxPageOil: {}",
                     maxPageVegetable, maxPageFruit, maxPageMeat, maxPageAquatic, maxPageOil);
 
-            // 获得不同页面的产品列表
-            // todo 开启多线程 此处你来写 用上面的htmlParserExecutorService 线程池
-            // todo 测试的时候可以将count的这个字段随便写个值进去
-            List<Product> product = getProduct(maxPageVegetable, PropertiesModel::getWebVegetableUrl, pm);
-            // 提供一个思路
-            // 线程采用Callable 然后for循环 再用下面的方法
-            //htmlParserExecutorService.submit(callable)
-            // 拿到返回值
-            // 这里可以 每个线程都去数据库中插入了 就不用再交个主线程一起插入
-            // 即 上面的result的这个列表就不要addAll了
+
+            result = new MyRunnable(maxPageVegetable, PropertiesModel::getWebVegetableUrl, pm) {
+            }.getproductLists();
 
 
-            logger.info("所有产品列表：{}", result);
+
+//            List<Product> productVegetables = getProduct(maxPageVegetable, PropertiesModel::getWebVegetableUrl, pm);
+//            List<Product> productFruits = getProduct(maxPageFruit, PropertiesModel::getWebFruitUrl, pm);
+//            List<Product> productMeats = getProduct(maxPageMeat, PropertiesModel::getWebMeatUrl, pm);
+//            List<Product> productAquatics = getProduct(maxPageAquatic, PropertiesModel::getWebAquaticUrl, pm);
+//            List<Product> productOils = getProduct(maxPageOil, PropertiesModel::getWebOilUrl, pm);
+
+
+            logger.info("蔬菜产品列表：{}", result);
 
         } catch (Exception e) {
             logger.info("error：", e);
@@ -109,10 +110,10 @@ public class Start {
      * @return
      * @throws Exception
      */
-    private static List<Product> getProduct(int pageCount, Function<PropertiesModel, String> getUrl,
+    public static List<Product> getProduct(int pageCount, Function<PropertiesModel, String> getUrl,
                                             PropertiesModel propertiesModel) throws Exception {
         List<Product> productList = new LinkedList<>();
-        for (int i = 1; i < pageCount; i++) {
+        for (int i = 1; i < 10; i++) {
             String url = getUrl.apply(propertiesModel).replace("???", String.valueOf(i));
             String htmlPage = OkHttpUtil.getHtmlByOkHttp(url, "");
             logger.info("解析网页成功！");
@@ -125,7 +126,7 @@ public class Start {
 
 
     /**
-     * 拼接三个产品特征LinkedList
+     * 获得产品属性列表
      *
      * @param pattern
      * @param htmlBlocks
