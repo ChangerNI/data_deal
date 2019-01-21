@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * 读取配置文件工具类
  *
- * @author nichang
+ * @author 倪畅
  * @version 1.0 2019-01-16
  */
 public class PropertiesUtil {

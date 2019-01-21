@@ -5,8 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 /**
- * @author MountainTop
- * @version 1.0 2018-07-16
+ * @author 倪畅
+ * @version 1.0 2019-01-16
  */
 public class DateUtil {
     /**

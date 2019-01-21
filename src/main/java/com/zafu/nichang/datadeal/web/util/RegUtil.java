@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
- * @author nichang
+ * 正则匹配类
+ * @author 倪畅
  * @version 1.0 2019-01-16
  */
 public class RegUtil {

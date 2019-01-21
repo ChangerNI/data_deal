@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
- * @author nichang
+ * @author 倪畅
  * @version 1.0 2019-01-16
  */
 public class DbUtil {

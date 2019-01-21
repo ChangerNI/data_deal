@@ -5,7 +5,12 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 解析html类
+ *
+ * @author 倪畅
+ * @version 1.0 2019-01-16
+ */
 public class OkHttpUtil {
     /**
      * 日志
