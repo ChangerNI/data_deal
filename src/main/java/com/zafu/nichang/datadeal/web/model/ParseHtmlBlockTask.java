@@ -34,9 +34,9 @@ public class ParseHtmlBlockTask implements Runnable {
     @Override
     public void run() {
         try {
-            String productHtml = OkHttpUtil.getHtmlByOkHttp(productUrl.replace("???", String.valueOf(1)), "");
+            String productHtml = OkHttpUtil.getHtmlByOkHttp(productUrl.replace("???", String.valueOf(1)), cookie);
             int pageCount = getMaxPage(productHtml);
-            log.info("productUrl: {}", productUrl);
+            log.info("productUrl: {}， pageCount: {}", productUrl, pageCount);
             List<Product> productList = getProduct(pageCount);
             // 执行插入数据库
             // 到时候 直接 注入 xxxMapper 或者什么 service 来进行插入 就行 这里可以先别管
