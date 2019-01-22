@@ -2,8 +2,13 @@ package com.zafu.nichang.datadeal.webspider.util;
 
 import com.zafu.nichang.datadeal.webspider.model.PropertiesModel;
 
-import java.io.*;
-import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * 读取配置文件工具类
@@ -12,10 +17,6 @@ import java.util.*;
  * @version 1.0 2019-01-16
  */
 public class PropertiesUtil {
-    /**
-     * 配置文件对象
-     */
-    private static Properties props = null;
 
     /**
      * 获取所有配置信息
@@ -30,11 +31,11 @@ public class PropertiesUtil {
         pm.setUrl(propertiesMap.get("url"));
         pm.setUsername(propertiesMap.get("username"));
         pm.setPassword(propertiesMap.get("password"));
-        pm.setWebVegetableUrl(propertiesMap.get("webVegetableUrl"));
-        pm.setWebFruitUrl(propertiesMap.get("webFruitUrl"));
-        pm.setWebMeatUrl(propertiesMap.get("webMeatUrl"));
-        pm.setWebAquaticUrl(propertiesMap.get("webAquaticUrl"));
-        pm.setWebOilUrl(propertiesMap.get("webOilUrl"));
+//        pm.setWebVegetableUrl(propertiesMap.get("webVegetableUrl"));
+//        pm.setWebFruitUrl(propertiesMap.get("webFruitUrl"));
+//        pm.setWebMeatUrl(propertiesMap.get("webMeatUrl"));
+//        pm.setWebAquaticUrl(propertiesMap.get("webAquaticUrl"));
+//        pm.setWebOilUrl(propertiesMap.get("webOilUrl"));
 
         return pm;
     }
@@ -49,19 +50,18 @@ public class PropertiesUtil {
      * @author
      */
     public static Map<String, String> readAllProperties(String filename) throws Exception {
-        props = new Properties();
-        InputStream in = new BufferedInputStream(new FileInputStream(filename));
-        props.load(in);
-        //关闭资源
-        in.close();
-        //保存所有的键值
-        Map<String, String> map = new HashMap<String, String>(16);
-        Enumeration en = props.propertyNames();
-        while (en.hasMoreElements()) {
-            String key = (String) en.nextElement();
-            String property = props.getProperty(key);
-            map.put(key, property);
+        try(final InputStream resourceAsStream = Class.forName(PropertiesUtil.class.getName()).getResourceAsStream(filename)) {
+            Properties props = new Properties();
+            props.load(resourceAsStream);
+            //保存所有的键值
+            Map<String, String> map = new HashMap<>(16);
+            Enumeration en = props.propertyNames();
+            while (en.hasMoreElements()) {
+                String key = (String) en.nextElement();
+                String property = props.getProperty(key);
+                map.put(key, property);
+            }
+            return map;
         }
-        return map;
     }
 }

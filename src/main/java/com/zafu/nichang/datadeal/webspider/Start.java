@@ -55,7 +55,7 @@ public class Start {
     public static void main(String[] args) {
         try {
             //读取配置文件
-            PropertiesModel pm = PropertiesUtil.getProperties(ROOT_DIRECTORY + "/config/properties_web.properties");
+            PropertiesModel pm = PropertiesUtil.getProperties("/properties_web.properties");
             logger.info("配置文件读取成功！");
             //连接源数据库
 //            conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
