@@ -12,10 +12,8 @@ public class Constant {
      */
     //产品名称
     public static final String OTA_WEB_PRODUCT_REG = "(padding-left:5px;\">)([\\d\\D]{0,12})(<\\/td>)";
-    //产品属性
-    public static final String OTA_WEB_DETAIL_REG = "(<td>)([\\d\\D]{1,7})(<\\/td>)";
-    //产品日期
-    public static final String OTA_WEB_DATE_REG = "(<td>)([\\d\\D]{10})(<\\/td><td><\\/td><\\/tr>)";
+    //产品属性(包含日期)
+    public static final String OTA_WEB_DETAIL_REG = "(<td>)([\\d\\D]{1,10})(<\\/td>)";
     //产品块
     public static final String OTA_WEB_HTML_BLOCK_REG = "(padding-left:5px;\">)([\\d\\D]{0,170})(<td><\\/td><\\/tr>)";
     //最大页数
@@ -25,7 +23,6 @@ public class Constant {
      */
     public static final Pattern OTA_WEB_PRODUCT_REG_PATTERN = Pattern.compile(OTA_WEB_PRODUCT_REG);
     public static final Pattern OTA_WEB_DETAIL_REG_PATTERN = Pattern.compile(OTA_WEB_DETAIL_REG);
-    public static final Pattern OTA_WEB_DATE_REG_PATTERN = Pattern.compile(OTA_WEB_DATE_REG);
     public static final Pattern OTA_WEB_HTML_BLOCK_REG_PATTERN = Pattern.compile(OTA_WEB_HTML_BLOCK_REG);
     public static final Pattern OTA_WEB_HTML_LAST_PAGE_REG_PATTERN = Pattern.compile(OTA_WEB_HTML_LAST_PAGE_REG);
 

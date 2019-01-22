@@ -20,15 +20,14 @@ public class Product {
     }
 
     public Product(LinkedList<String> productNameLists,
-                   LinkedList<String> productDetailsLists,
-                   LinkedList<String> productDateLists) {
+                   LinkedList<String> productDetailsLists) {
         this.productName = productNameLists.removeFirst();
         this.minPrice = Double.valueOf(productDetailsLists.removeFirst());
         this.avgPrice = Double.valueOf(productDetailsLists.removeFirst());
         this.maxPrice = Double.valueOf(productDetailsLists.removeFirst());
         this.sizeType = productDetailsLists.removeFirst();
         this.unit = productDetailsLists.removeFirst();
-        this.dateTime = productDateLists.removeFirst();
+        this.dateTime = productDetailsLists.removeFirst();
     }
 
     public Product(String productName) {

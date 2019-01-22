@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
@@ -34,7 +35,9 @@ public class Start {
      */
     private static final String ROOT_DIRECTORY = System.getProperty("user.dir");
 
-    public static ExecutorService htmlParserExecutorService = Executors.newFixedThreadPool(5,
+    private static final Integer THREAD_COUNT = 5;
+
+    public static ExecutorService htmlParserExecutorService = Executors.newFixedThreadPool(THREAD_COUNT,
             new BasicThreadFactory.Builder().namingPattern("html-parser-%d").daemon(true).build());
 
 
@@ -52,23 +55,26 @@ public class Start {
     public static void main(String[] args) {
         try {
             //读取配置文件
-            PropertiesModel pm = PropertiesUtil.getProperties(ROOT_DIRECTORY + "/config/propertires_web.properties");
+            PropertiesModel pm = PropertiesUtil.getProperties(ROOT_DIRECTORY + "/config/properties_web.properties");
             logger.info("配置文件读取成功！");
             //连接源数据库
             conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
             logger.info("数据库连接成功！");
 
-            logger.info("解析最大网页数成功！");
-
             // 是否需要 Cookie对象？？
             String cookie = "";
+
+            // 等待子线程结束
+            CountDownLatch waiter = new CountDownLatch(THREAD_COUNT);
+
             // 开启多线程 执行
             for (ProductEnums productEnums : ProductEnums.values()) {
-                String productUrl = productEnums.getUrl();
-                ParseHtmlBlockTask parseHtmlBlockTask = new ParseHtmlBlockTask(productUrl, cookie);
-                htmlParserExecutorService.execute(parseHtmlBlockTask);
+                ParseHtmlBlockTask parseHtmlBlockTask = new ParseHtmlBlockTask(productEnums, cookie, waiter);
+                htmlParserExecutorService.submit(parseHtmlBlockTask);
             }
 
+            waiter.await();
+            logger.info("子线程结束！");
         } catch (Exception e) {
             logger.info("error：", e);
         } finally {
