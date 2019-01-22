@@ -2,9 +2,6 @@ package com.zafu.nichang.datadeal.webspider;
 
 import com.zafu.nichang.datadeal.webspider.enums.ProductEnums;
 import com.zafu.nichang.datadeal.webspider.model.ParseHtmlBlockTask;
-import com.zafu.nichang.datadeal.webspider.model.PropertiesModel;
-import com.zafu.nichang.datadeal.webspider.util.DbUtil;
-import com.zafu.nichang.datadeal.webspider.util.PropertiesUtil;
 import com.zafu.nichang.datadeal.webspider.util.RegUtil;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
@@ -54,12 +51,12 @@ public class Start {
      */
     public static void main(String[] args) {
         try {
-            //读取配置文件
-            PropertiesModel pm = PropertiesUtil.getProperties("/properties_web.properties");
-            logger.info("配置文件读取成功！");
-            //连接源数据库
-            conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
-            logger.info("数据库连接成功！");
+//            //读取配置文件
+//            PropertiesModel pm = PropertiesUtil.getProperties("/properties_web.properties");
+//            logger.info("配置文件读取成功！");
+//            //连接源数据库
+//            conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
+//            logger.info("数据库连接成功！");
 
             // 是否需要 Cookie对象？？
             String cookie = "";
@@ -79,8 +76,8 @@ public class Start {
             logger.info("error：", e);
         } finally {
             try {
-                //关闭数据库连接
-                conn.close();
+//                //关闭数据库连接
+//                conn.close();
             } catch (Exception e) {
                 logger.info(e.toString());
             }

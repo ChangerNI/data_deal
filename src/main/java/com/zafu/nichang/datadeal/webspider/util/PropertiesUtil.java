@@ -43,7 +43,7 @@ public class PropertiesUtil {
 
     /**
      * 读取properties的全部信息
-     * Jun 26, 2010 9:21:01 PM
+     * Jan 22, 2019 9:21:01 PM
      *
      * @throws FileNotFoundException 配置文件没有找到
      * @throws IOException           关闭资源文件，或者加载配置文件错误
