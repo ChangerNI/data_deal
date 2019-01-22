@@ -55,7 +55,7 @@ public class Start {
             PropertiesModel pm = PropertiesUtil.getProperties(ROOT_DIRECTORY + "/config/propertires_web.properties");
             logger.info("配置文件读取成功！");
             //连接源数据库
-            conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
+//            conn = DbUtil.getConnection(pm.getDriver(), pm.getUrl(), pm.getUsername(), pm.getPassword());
             logger.info("数据库连接成功！");
 
             logger.info("解析最大网页数成功！");
